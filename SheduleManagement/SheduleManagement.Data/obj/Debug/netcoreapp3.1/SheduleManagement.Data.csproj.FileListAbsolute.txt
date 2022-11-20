@@ -1,0 +1,13 @@
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\bin\Debug\netcoreapp3.1\SheduleManagement.Data.deps.json
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\bin\Debug\netcoreapp3.1\SheduleManagement.Data.runtimeconfig.json
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\bin\Debug\netcoreapp3.1\SheduleManagement.Data.runtimeconfig.dev.json
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\bin\Debug\netcoreapp3.1\SheduleManagement.Data.dll
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\bin\Debug\netcoreapp3.1\SheduleManagement.Data.pdb
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.csproj.AssemblyReference.cache
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.AssemblyInfoInputs.cache
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.AssemblyInfo.cs
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.csproj.CoreCompileInputs.cache
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.dll
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.pdb
+C:\Users\Home\Desktop\DoAnMoi\SheduleManagement\SheduleManagement.Data\obj\Debug\netcoreapp3.1\SheduleManagement.Data.genruntimeconfig.cache
