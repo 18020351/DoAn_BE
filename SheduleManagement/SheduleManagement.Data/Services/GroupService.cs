@@ -12,7 +12,7 @@ namespace SheduleManagement.Data.Services
         {
             _dbContext = dbContext;
         }
-        public (string, int) Add(int userId, string name, string description)
+        public (string, int) Add(int userId, string name , string description)
         {
             try
             {
@@ -70,6 +70,22 @@ namespace SheduleManagement.Data.Services
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+        public (string, Groups) GetGroupById(int groupId)
+        {
+            try
+            {
+                var gr = _dbContext.Groups.Find(groupId);
+                if (gr == null) return ("Không tồn tại nhóm tương ứng.", null);
+                else
+                {
+                    return ("", gr); 
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
             }
         }
     }

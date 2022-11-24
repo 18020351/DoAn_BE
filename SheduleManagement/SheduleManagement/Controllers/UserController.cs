@@ -129,5 +129,29 @@ namespace SheduleManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("GetUser/{userId}")]
+        public IActionResult GetUser(int userId)
+        {
+            try
+            {
+                var u = new UserService(_dbContext);
+                var (msg, user) = u.GetUser(userId);
+                if (msg.Length == 0) return Ok(new
+                {
+                    Id = user.Id,
+                    Username = user.UserName,
+                 //   FullName = user.FirstName + " "+ user.LastName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Phone = user.Phone,
+                    Address = user.Address,
+                });
+                return BadRequest(msg);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

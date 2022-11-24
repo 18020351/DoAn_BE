@@ -134,5 +134,21 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
+        public (string, Users) GetUser(int userId)
+        {
+            try
+            {
+                var u = _dbContext.Users.Find(userId);
+                if (u == null) return ("Không tồn tại người dùng tương ứng.", null);
+                else
+                {
+                    return ("", u) ;
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
     }
 }

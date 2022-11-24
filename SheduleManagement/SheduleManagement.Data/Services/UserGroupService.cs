@@ -68,6 +68,7 @@ namespace SheduleManagement.Data.Services
                 return ex.Message;
             }
         }
+        
         public string Delete(int groupId, int userId)
         {
             try

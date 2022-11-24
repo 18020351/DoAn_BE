@@ -127,6 +127,8 @@ namespace SheduleManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+       
+
         [HttpGet("GetInvitation/{userId}")]
         public IActionResult GetInvitation(int userId)
         {
