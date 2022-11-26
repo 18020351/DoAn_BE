@@ -1,6 +1,7 @@
 ﻿using SheduleManagement.Data.EF;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SheduleManagement.Data.Services
@@ -82,6 +83,17 @@ namespace SheduleManagement.Data.Services
                 {
                     return ("", gr); 
                 }
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
+        public (string, List<Groups>) GetAll()
+        {
+            try
+            {
+                return (String.Empty, _dbContext.Groups.ToList());
             }
             catch (Exception ex)
             {

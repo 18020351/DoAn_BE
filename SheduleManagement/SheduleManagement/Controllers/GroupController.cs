@@ -80,5 +80,27 @@ namespace SheduleManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                var groupsService = new GroupService(_dbContext);
+                var (msg, groups) = groupsService.GetAll();
+                if (msg.Length > 0) return BadRequest(msg);
+                return Ok(groups.Select(x => new
+                {
+                    Id = x.Id,
+                    GroupName = x.GroupName,
+                    Description = x.GroupDescription,
+                    CreatorId = x.CreatorId,
+                    CreateTime = x.CreatedTime,
+                }).ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

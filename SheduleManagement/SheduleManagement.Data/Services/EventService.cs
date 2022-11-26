@@ -117,5 +117,16 @@ namespace SheduleManagement.Data.Services
                 return ex.Message;
             }
         }
+        public (string, List<Events>) GetAll()
+        {
+            try
+            {
+                return (String.Empty, _dbContext.Events.ToList());
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
     }
 }
