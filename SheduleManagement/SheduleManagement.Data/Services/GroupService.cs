@@ -100,5 +100,17 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
+        public (string, Groups) GetById(int id)
+        {
+            try
+            {
+                return (String.Empty, _dbContext.Groups.Find(id));
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
+
     }
 }

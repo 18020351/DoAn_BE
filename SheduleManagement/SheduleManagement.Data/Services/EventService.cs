@@ -128,5 +128,18 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
+        public (string, List<Events>) GetEventGroup(int groupId)
+        {
+            try
+            {
+                return (String.Empty, _dbContext.Events.Where(x => x.GroupId == groupId).ToList());
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
+        
+
     }
 }

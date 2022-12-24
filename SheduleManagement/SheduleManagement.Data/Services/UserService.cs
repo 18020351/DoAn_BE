@@ -150,5 +150,16 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
+        public (string, Users) GetById(int id)
+        {
+            try
+            {
+                return (String.Empty, _dbContext.Users.Find(id));
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message, null);
+            }
+        }
     }
 }

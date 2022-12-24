@@ -162,5 +162,27 @@ namespace SheduleManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("GetAllEventGroup")]
+        public IActionResult GetAllEventGroup(int groupId)
+        {
+            try
+            {
+                var eventService = new EventService(_dbContext);
+                var (msg, events) = eventService.GetEventGroup(groupId);
+                if (msg.Length > 0) return BadRequest(msg);
+                return Ok(events.Select(x => new
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    CreateTime = x.CreatedTime,
+                    CreateId = x.CreatorId,
+                }).ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
