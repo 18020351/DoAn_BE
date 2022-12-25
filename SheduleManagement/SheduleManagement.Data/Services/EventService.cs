@@ -64,7 +64,7 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
-        public (string, int) Update(int eventId, string title, string description, DateTime startTime, DateTime endTime, int recurrenceType, int groupId, List<int> participants, int creatorId)
+        public (string, int) Update(int eventId, string title, string description, string place, DateTime startTime, DateTime endTime, int recurrenceType, int groupId, List<int> participants, int creatorId, int statusEvent)
         {
             try
             {
@@ -74,12 +74,14 @@ namespace SheduleManagement.Data.Services
                     if (ev == null) return ("Không tìm thấy sự kiện tương ứng", 0);
                     ev.Title = title;
                     ev.Description = description;
+                    ev.Place = place;
                     ev.StartTime = startTime;
                     ev.EndTime = endTime;
                     ev.CreatorId = creatorId;
                     ev.RecurrenceType = recurrenceType;
                     ev.GroupId = groupId;
                     ev.CreatedTime = DateTime.Now;
+                    ev.StatusEvent = statusEvent;
                     if (eventId == 0) _dbContext.Events.Add(ev);
                     _dbContext.SaveChanges();
                     var eventUserService = new EventUserService(_dbContext);

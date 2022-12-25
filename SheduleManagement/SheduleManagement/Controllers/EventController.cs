@@ -30,10 +30,12 @@ namespace SheduleManagement.Controllers
                     Id = ev.Id,
                     Title = ev.Title,
                     Description = ev.Description,
+                    Place = ev.Place,
                     StartTime = ev.StartTime,
                     EndTime = ev.StartTime,
                     RecurrenceType = ev.RecurrenceType,
                     GroupId = ev.GroupId,
+                    StatusEvent = ev.StatusEvent,
                     Participants = ev.EventUsers.Select(x => new
                     {
                         id = x.UserId,
@@ -42,7 +44,7 @@ namespace SheduleManagement.Controllers
                         lastname = x.Users.LastName,
                         status = x.Status
                     }).ToList()
-                });
+                }); ;
             }
             catch (Exception ex)
             {
@@ -64,6 +66,7 @@ namespace SheduleManagement.Controllers
                     StartTime = x.StartTime,
                     EndTime = x.EndTime,
                     Description = x.Description,
+                    Place = x.Place,
                     Creator = new
                     {
                         Id = x.Creator.Id,
@@ -71,6 +74,7 @@ namespace SheduleManagement.Controllers
                     },
                     RecurrenceType = x.RecurrenceType,
                     GropuId = x.GroupId,
+                    StatusEvent = x.StatusEvent,
                     Status = (x.EventUsers == null || x.EventUsers.Count == 0) ? 2 : x.EventUsers[0].Status
                 }).ToList());
             }
@@ -85,7 +89,7 @@ namespace SheduleManagement.Controllers
             try
             {
                 var eventService = new EventService(_dbContext);
-                var (msg, eventId) = eventService.Update(model.id, model.title, model.description, model.startTime, model.endTime, model.recurrenceType, model.groupId, model.participants.Select(x => x.Id).ToList(), model.creator.Id);
+                var (msg, eventId) = eventService.Update(model.id, model.title, model.description, model.place, model.startTime, model.endTime, model.recurrenceType, model.groupId, model.participants.Select(x => x.Id).ToList(), model.creator.Id, model.statusEvent);
                 if (msg.Length > 0) return BadRequest(msg);
                 return Ok(eventId);
             }
@@ -153,8 +157,10 @@ namespace SheduleManagement.Controllers
                     Id = x.Id,
                     Title = x.Title,
                     Description = x.Description,
+                    Place = x.Place,
                     CreateTime = x.CreatedTime,
                     CreateId = x.CreatorId,
+                    StatusEvent = x.StatusEvent,
                 }).ToList());
             }
             catch (Exception ex)
@@ -162,27 +168,27 @@ namespace SheduleManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("GetAllEventGroup")]
-        public IActionResult GetAllEventGroup(int groupId)
-        {
-            try
-            {
-                var eventService = new EventService(_dbContext);
-                var (msg, events) = eventService.GetEventGroup(groupId);
-                if (msg.Length > 0) return BadRequest(msg);
-                return Ok(events.Select(x => new
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    CreateTime = x.CreatedTime,
-                    CreateId = x.CreatorId,
-                }).ToList());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpGet("GetAllEventGroup")]
+        //public IActionResult GetAllEventGroup(int groupId)
+        //{
+        //    try
+        //    {
+        //        var eventService = new EventService(_dbContext);
+        //        var (msg, events) = eventService.GetEventGroup(groupId);
+        //        if (msg.Length > 0) return BadRequest(msg);
+        //        return Ok(events.Select(x => new
+        //        {
+        //            Id = x.Id,
+        //            Title = x.Title,
+        //            Description = x.Description,
+        //            CreateTime = x.CreatedTime,
+        //            CreateId = x.CreatorId,
+        //        }).ToList());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
     }
 }

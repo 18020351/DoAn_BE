@@ -71,11 +71,17 @@ namespace SheduleManagement.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Place")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RecurrenceType")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("StatusEvent")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(255)")

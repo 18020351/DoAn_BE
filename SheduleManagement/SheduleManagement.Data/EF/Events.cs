@@ -15,6 +15,7 @@ namespace SheduleManagement.Data.EF
         public string Title { get; set; }
         [StringLength(255)]
         public string Description { get; set; }
+        public string Place { get; set; }
         [Required]
         public DateTime StartTime { get; set; }
         [Required]
@@ -25,7 +26,8 @@ namespace SheduleManagement.Data.EF
         public virtual Users Creator { get; set; }
         
         public int RecurrenceType { get; set; }
-      
+
+        public int StatusEvent { get; set; }
         public int GroupId { get; set; }
         [ForeignKey("GroupId")]
         public virtual Groups Groups { get; set; }

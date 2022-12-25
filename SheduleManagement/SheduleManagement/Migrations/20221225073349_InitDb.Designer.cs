@@ -10,7 +10,7 @@ using SheduleManagement.Data;
 namespace SheduleManagement.Migrations
 {
     [DbContext(typeof(ScheduleManagementDbContext))]
-    [Migration("20221119074915_InitDb")]
+    [Migration("20221225073349_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,11 +73,17 @@ namespace SheduleManagement.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Place")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RecurrenceType")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("StatusEvent")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(255)")

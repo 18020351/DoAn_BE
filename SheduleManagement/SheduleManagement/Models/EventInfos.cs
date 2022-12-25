@@ -10,10 +10,12 @@ namespace SheduleManagement.Models
         public int id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public string place { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public int recurrenceType { get; set; }
         public int groupId { get; set; }
+        public int statusEvent { get; set; }
         public UserInfos creator { get; set; }
         public List<UserInfos> participants { get; set; }
     }

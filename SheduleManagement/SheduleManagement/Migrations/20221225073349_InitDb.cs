@@ -75,11 +75,13 @@ namespace SheduleManagement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 255, nullable: true),
                     Description = table.Column<string>(maxLength: 255, nullable: true),
+                    Place = table.Column<string>(nullable: true),
                     StartTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),
                     CreatorId = table.Column<int>(nullable: false),
-                    RecurrenceType = table.Column<int>(nullable: true),
-                    GroupId = table.Column<int>(nullable: true),
+                    RecurrenceType = table.Column<int>(nullable: false),
+                    StatusEvent = table.Column<int>(nullable: false),
+                    GroupId = table.Column<int>(nullable: false),
                     CreatedTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -107,7 +109,7 @@ namespace SheduleManagement.Migrations
                     GroupId = table.Column<int>(nullable: false),
                     RoleId = table.Column<int>(nullable: false),
                     CreatedTime = table.Column<DateTime>(nullable: false),
-                    IsAccepted = table.Column<bool>(nullable: true)
+                    IsAccepted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,7 +140,7 @@ namespace SheduleManagement.Migrations
                 {
                     UserId = table.Column<int>(nullable: false),
                     EventId = table.Column<int>(nullable: false),
-                    Status = table.Column<int>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
                     ReasonForDecline = table.Column<string>(nullable: true),
                     CreatedTime = table.Column<DateTime>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)
