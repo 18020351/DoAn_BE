@@ -79,9 +79,9 @@ namespace SheduleManagement.Migrations
                     StartTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),
                     CreatorId = table.Column<int>(nullable: false),
-                    RecurrenceType = table.Column<int>(nullable: false),
+                    RecurrenceType = table.Column<int>(nullable: true),
                     StatusEvent = table.Column<int>(nullable: false),
-                    GroupId = table.Column<int>(nullable: false),
+                    GroupId = table.Column<int>(nullable: true),
                     CreatedTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -109,7 +109,7 @@ namespace SheduleManagement.Migrations
                     GroupId = table.Column<int>(nullable: false),
                     RoleId = table.Column<int>(nullable: false),
                     CreatedTime = table.Column<DateTime>(nullable: false),
-                    IsAccepted = table.Column<bool>(nullable: false)
+                    IsAccepted = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -140,7 +140,7 @@ namespace SheduleManagement.Migrations
                 {
                     UserId = table.Column<int>(nullable: false),
                     EventId = table.Column<int>(nullable: false),
-                    Status = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: true),
                     ReasonForDecline = table.Column<string>(nullable: true),
                     CreatedTime = table.Column<DateTime>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false)

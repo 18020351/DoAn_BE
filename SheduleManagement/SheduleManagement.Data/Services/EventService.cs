@@ -53,10 +53,25 @@ namespace SheduleManagement.Data.Services
                 events.ForEach(x => _dbContext.Entry(x).Reference(y => y.Creator).Load());
                 events = events.Where(x => x.Creator != null).ToList();
                 events.ForEach(x => _dbContext.Entry(x).Collection(y => y.EventUsers).Load());
-                events.ForEach(x =>
+                //events.ForEach(x =>
+                //{
+                //    x.EventUsers = (x.EventUsers == null || x.EventUsers.Count == 0 || userId <= 0) ? null : (x.EventUsers.Where(y => y.UserId == userId).ToList());
+                //});
+                foreach(var ev in events)
                 {
-                    x.EventUsers = (x.EventUsers == null || x.EventUsers.Count == 0 || userId <= 0) ? null : x.EventUsers.Where(y => y.UserId == userId).ToList();
-                });
+                    if(ev.EventUsers==null || ev.EventUsers.Count==0 || userId <= 0)
+                    {
+                        ev.EventUsers = null;
+                    }
+                    else
+                    {
+                        foreach (var eventUser in ev.EventUsers)
+                            _dbContext.Entry(eventUser)
+                                .Reference(x => x.Users)
+                                .Load();
+                    }
+                }
+                
                 return (String.Empty, events);
             }
             catch (Exception ex)
@@ -64,7 +79,7 @@ namespace SheduleManagement.Data.Services
                 return (ex.Message, null);
             }
         }
-        public (string, int) Update(int eventId, string title, string description, string place, DateTime startTime, DateTime endTime, int recurrenceType, int groupId, List<int> participants, int creatorId, int statusEvent)
+        public (string, int) Update(int eventId, string title, string description, string place, DateTime startTime, DateTime endTime, int recurrenceType, int statusEvent, int groupId, List<int> participants, int creatorId)
         {
             try
             {
@@ -79,9 +94,10 @@ namespace SheduleManagement.Data.Services
                     ev.EndTime = endTime;
                     ev.CreatorId = creatorId;
                     ev.RecurrenceType = recurrenceType;
+                    ev.StatusEvent = statusEvent;
                     ev.GroupId = groupId;
                     ev.CreatedTime = DateTime.Now;
-                    ev.StatusEvent = statusEvent;
+                    
                     if (eventId == 0) _dbContext.Events.Add(ev);
                     _dbContext.SaveChanges();
                     var eventUserService = new EventUserService(_dbContext);

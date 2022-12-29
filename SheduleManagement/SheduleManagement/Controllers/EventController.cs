@@ -75,7 +75,18 @@ namespace SheduleManagement.Controllers
                     RecurrenceType = x.RecurrenceType,
                     GropuId = x.GroupId,
                     StatusEvent = x.StatusEvent,
-                    Status = (x.EventUsers == null || x.EventUsers.Count == 0) ? 2 : x.EventUsers[0].Status
+
+                    Status = (x.EventUsers == null || x.EventUsers.Count == 0) ? 2 : x.EventUsers[0].Status,
+
+                    Participants = x.EventUsers.Select(y => new
+                    {
+                        id = y.UserId,
+                        username = y.Users.UserName,
+                        firstname = y.Users.FirstName,
+                        lastname = y.Users.LastName,
+                        status = y.Status
+                    }).ToList()
+
                 }).ToList());
             }
             catch (Exception ex)
@@ -89,7 +100,7 @@ namespace SheduleManagement.Controllers
             try
             {
                 var eventService = new EventService(_dbContext);
-                var (msg, eventId) = eventService.Update(model.id, model.title, model.description, model.place, model.startTime, model.endTime, model.recurrenceType, model.groupId, model.participants.Select(x => x.Id).ToList(), model.creator.Id, model.statusEvent);
+                var (msg, eventId) = eventService.Update(model.id, model.title, model.description, model.place, model.startTime, model.endTime, model.recurrenceType, model.statusEvent, model.groupId, model.participants.Select(x => x.Id).ToList(), model.creator.Id);
                 if (msg.Length > 0) return BadRequest(msg);
                 return Ok(eventId);
             }

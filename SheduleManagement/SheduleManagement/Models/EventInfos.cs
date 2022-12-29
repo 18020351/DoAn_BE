@@ -14,8 +14,8 @@ namespace SheduleManagement.Models
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public int recurrenceType { get; set; }
-        public int groupId { get; set; }
         public int statusEvent { get; set; }
+        public int groupId { get; set; }
         public UserInfos creator { get; set; }
         public List<UserInfos> participants { get; set; }
     }

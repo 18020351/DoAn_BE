@@ -10,7 +10,7 @@ using SheduleManagement.Data;
 namespace SheduleManagement.Migrations
 {
     [DbContext(typeof(ScheduleManagementDbContext))]
-    [Migration("20221225073349_InitDb")]
+    [Migration("20221226150849_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
